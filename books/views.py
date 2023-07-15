@@ -113,33 +113,33 @@ class BookUpdateApiView(APIView):
 
 
 
-# class BookCreateApiView(generics.CreateAPIView):
-#     queryset = Book.objects.all()
-#     serializer_class = BookSerializer
+class BookCreateApiView(generics.CreateAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
 
-class BookCreateApiView(APIView):
-
-    def post(self, request):
-        data = request.data
-        serializer = BookSerializer(data=data)
-
-        if serializer.is_valid():
-            serializer.save()
-            data = {
-                    'status': f'Books are saved to the database',
-                    'books': data
-                   }
-
-            return Response(data)
-
-        else:
-            return Response(
-                {
-                    'status': False,
-                    'message': 'Serializer is not valid'
-                },
-                status=status.HTTP_400_BAD_REQUEST
-            )
+# class BookCreateApiView(APIView):
+#
+#     def post(self, request):
+#         data = request.data
+#         serializer = BookSerializer(data=data)
+#
+#         if serializer.is_valid():
+#             serializer.save()
+#             data = {
+#                     'status': f'Books are saved to the database',
+#                     'books': data
+#                    }
+#
+#             return Response(data)
+#
+#         else:
+#             return Response(
+#                 {
+#                     'status': False,
+#                     'message': 'Serializer is not valid'
+#                 },
+#                 status=status.HTTP_400_BAD_REQUEST
+#             )
 
 
 
